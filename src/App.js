@@ -1,8 +1,12 @@
 
 import './App.css';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {Client as Styletron} from 'styletron-engine-atomic';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider, styled} from 'baseui';
+import Posts from './Posts';
+import Home from './Home';
 const engine = new Styletron();
 const Centered = styled('div', {
   display: 'flex',
@@ -16,9 +20,20 @@ function App() {
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <Centered>
-          <div className="app">
-            <h1>In The name of ALLAH</h1>
-          </div>
+          <Router>
+            <div className="app">
+              <Switch>
+
+                <Route path = '/posts'>
+                  <Posts />
+                </Route>
+
+                <Route path = '/'>
+                  <Home />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
         </Centered>
       </BaseProvider>
     </StyletronProvider>
