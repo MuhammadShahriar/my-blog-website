@@ -1,13 +1,11 @@
 import axios from './axios';
+import './PostDetails.css'
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom';
 import {
     Card,
     StyledBody,
-    StyledAction,
-    StyledThumbnail,
   } from 'baseui/card';
-  import {Button} from 'baseui/button';
 
 function PostDetails() {
     const [post, setPost] = useState();
@@ -17,25 +15,22 @@ function PostDetails() {
         async function fetchData() {
             const request = await axios.get(`/${param.postId}`);
             setPost(request.data);
-            console.log(post)
-            
             return request;
         }
         fetchData();
     }, []);
 
     return (
-        <div>
+        <div className = 'PostDetails'>
             {!post? (<p>Loading...</p>)
             :
             (
                 <Card
-                    overrides={{Root: {style: {width: '100%', alignItems: 'center'} }}}
+                    overrides={{Root: {style: {width: '80%', alignItems: 'center'} }}}
                     title={post.postTitle}
                 >
                     <StyledBody>
                         <p>{`Auther : ${post.authorName}`}</p>
-                        {/* <p>{`Published date : ${post.createdAt}`}</p> */}
                     </StyledBody>
                     
                     <StyledBody>

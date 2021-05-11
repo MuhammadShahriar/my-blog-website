@@ -7,7 +7,14 @@ function Home() {
         <div>
             <h1>Welcome to Shahriar's blog</h1>
             <h3>Click below button to see posts</h3>
-            <Link to='/posts' ><Button shape={SHAPE.pill} size={SIZE.large} >See Posts</Button></Link>
+            <Link to='/posts' >
+                <Button 
+                    shape={SHAPE.pill} 
+                    size={SIZE.large} 
+                >
+                    See Posts
+                </Button>
+            </Link>
         </div>
     )
 }

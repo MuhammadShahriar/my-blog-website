@@ -8,7 +8,6 @@ import {
     Card,
     StyledBody,
     StyledAction,
-    StyledThumbnail,
   } from 'baseui/card';
   import {Button} from 'baseui/button';
 
@@ -19,7 +18,6 @@ function Posts() {
     const [posts, setPosts] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [value, setValue] = useState("");
-    //const [condition, setCondintion] = useState('');
 
     useEffect(() => {
         async function fetchData() {
@@ -27,7 +25,6 @@ function Posts() {
             setPosts(request.data);
             const request1 = await axios.get('');
             setTotalPages(request1.data.length);
-            console.log(totalPages)
             return request;
         }
         fetchData();
@@ -40,7 +37,6 @@ function Posts() {
             setPosts(request.data);
             const request1 = await axios.get('');
             setTotalPages(request1.data.length);
-            console.log(totalPages)
             return request;
         }
 
@@ -50,7 +46,6 @@ function Posts() {
             setPosts(request.data);
             const request1 = await axios.get(`?search=${value}`);
             setTotalPages(request1.data.length);
-            console.log(totalPages)
             return request;
         }
 
@@ -85,9 +80,9 @@ function Posts() {
                 <Button
                     overrides={{
                         Root: {
-                        style: {
-                            height: '60px',
-                        },
+                            style: {
+                                height: '60px',
+                            },
                         },
                     }}
                     onClick={() => getData()}
@@ -98,7 +93,15 @@ function Posts() {
             
             {posts.map ( post => (
                 <Card
-                    overrides={{Root: {style: {width: '80%', alignItems: 'center'} }}}
+                    overrides={{
+                        Root: {
+                            style: {
+                                width: '80%', 
+                                alignItems: 'center', 
+                                margin: '30px'
+                            } 
+                        }
+                    }}
                     title={post.postTitle}
                 >
                     <StyledBody>
@@ -110,7 +113,16 @@ function Posts() {
                     </StyledBody>
                     <StyledAction>
                     <Link to={`/post/${post.id}`} >
-                        <Button overrides={{BaseButton: {style: {width: '33%', height:'100%'}}}}>
+                        <Button 
+                            overrides={{
+                                BaseButton: {
+                                    style: {
+                                        width: '33%', 
+                                        height:'100%'
+                                    }
+                                }
+                            }}
+                        >
                             Read more
                         </Button>
                     </Link>
@@ -119,6 +131,13 @@ function Posts() {
             ) )}
 
             <Pagination
+                overrides={{
+                    Root: {
+                        style: { 
+                            margin: '30px'
+                        } 
+                    }
+                }}
                 numPages={Math.ceil(((1.0 * totalPages)/10.0))}
                 currentPage={currentPage}
                 onPageChange={({ nextPage }) => {
