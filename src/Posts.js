@@ -112,20 +112,20 @@ function Posts() {
                         <p>{post.postContent.substring(0, 300)}...</p>
                     </StyledBody>
                     <StyledAction>
-                    <Link to={`/post/${post.id}`} >
-                        <Button 
-                            overrides={{
-                                BaseButton: {
-                                    style: {
-                                        width: '33%', 
-                                        height:'100%'
+                        <Link to={`/post/${post.id}`} >
+                            <Button 
+                                overrides={{
+                                    BaseButton: {
+                                        style: {
+                                            width: '33%', 
+                                            height:'100%'
+                                        }
                                     }
-                                }
-                            }}
-                        >
-                            Read more
-                        </Button>
-                    </Link>
+                                }}
+                            >
+                                Read more
+                            </Button>
+                        </Link>
                     </StyledAction>
                 </Card>
             ) )}
