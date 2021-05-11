@@ -26,7 +26,15 @@ function PostDetails() {
             :
             (
                 <Card
-                    overrides={{Root: {style: {width: '80%', alignItems: 'center'} }}}
+                    overrides={{
+                        Root: {
+                            style: {
+                                width: '80%', 
+                                alignItems: 'center',
+                                margin: '20px',
+                            } 
+                        }
+                    }}
                     title={post.postTitle}
                 >
                     <StyledBody>
