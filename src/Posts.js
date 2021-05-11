@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Posts.css'
 import axios from './axios';
 import { Pagination } from "baseui/pagination";
+import {Link} from 'react-router-dom';
+
 import {
     Card,
     StyledBody,
@@ -43,9 +45,11 @@ function Posts() {
                         <p>{post.postContent.substring(0, 300)}...</p>
                     </StyledBody>
                     <StyledAction>
-                    <Button overrides={{BaseButton: {style: {width: '33%'}}}}>
-                        Read more
-                    </Button>
+                    <Link to={`/post/${post.id}`} >
+                        <Button overrides={{BaseButton: {style: {width: '33%', height:'100%'}}}}>
+                            Read more
+                        </Button>
+                    </Link>
                     </StyledAction>
                 </Card>
             ) )}

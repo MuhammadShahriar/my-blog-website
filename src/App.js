@@ -7,6 +7,7 @@ import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider, styled} from 'baseui';
 import Posts from './Posts';
 import Home from './Home';
+import PostDetails from './PostDetails';
 const engine = new Styletron();
 const Centered = styled('div', {
   display: 'flex',
@@ -23,6 +24,10 @@ function App() {
           <Router>
             <div className="app">
               <Switch>
+
+                <Route path = '/post/:postId'>
+                  <PostDetails />
+                </Route>
 
                 <Route path = '/posts'>
                   <Posts />
